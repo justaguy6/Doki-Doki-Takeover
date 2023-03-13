@@ -6,11 +6,11 @@ name: Android Build
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
- # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -44,21 +44,21 @@ jobs:
 
       - name: Install Haxelib
         run: |
-          haxelib setup /home/runner/haxelib
-          haxelib install hxcpp > /dev/null
-          haxelib install lime 7.9.0
-          haxelib install newgrounds 1.3.0
-          haxelib install openfl 9.1.0
-          haxelib --never install flixel 4.11.0
-          haxelib run lime setup flixel
-          haxelib install flixel-tools
-          haxelib install flixel-ui
-          haxelib install hscript
+          haxelib --quiet setup /home/runner/haxelib
+          haxelib --quiet install hxcpp > /dev/null
+          haxelib --quiet install lime 7.9.0
+          haxelib --quiet install openfl 9.1.0
+          haxelib --quiet --never install flixel 4.11.0
+          haxelib --quiet run lime setup flixel
+          haxelib --quiet install flixel-tools
+          haxelib --quiet install flixel-ui
+          haxelib --quiet install hscript
+          haxelib --quiet install flixel-addons
           haxelib --quiet install hxCodec
           haxelib install firetongue
-          haxelib git extension-webview https://github.com/MateuzinhoX02/extension-webview
-          haxelib git flixel-addons https://github.com/ninjamuffin99/flixel-addons
-          haxelib git linc_luajit https://github.com/Sirox228/linc_luajit.git
+          haxelib git extension-androidtools https://github.com/majigsaw77/extension-androidtools.git
+          haxelib git hxShaders https://github.com/justaguy6/HxShaders
+          haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
           haxelib list
 
       - name: Create Version Tag
@@ -74,7 +74,6 @@ jobs:
           haxelib set lime 7.9.0 -y
           haxelib set openfl 9.1.0 -y
           haxelib set flixel 4.11.0 -y
-          haxelib set newgrounds 1.3.0 -y
           haxelib list
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
@@ -85,5 +84,5 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: Qt Android Build
+          name: PE Android Build
           path: export/release/android/bin/app/build/outputs/apk/debug
