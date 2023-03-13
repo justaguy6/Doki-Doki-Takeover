@@ -16,7 +16,8 @@ class Init extends MusicBeatState
 	{
 		SaveData.init();
 		CoolUtil.setFPSCap(SaveData.framerate);
-		KeyBinds.gamepad = FlxG.gamepads.lastActive != null;
+		
+		//KeyBinds.gamepad = FlxG.gamepads.lastActive != null;
 
 		if (Main.fpsVar == null)
 		{
@@ -38,7 +39,7 @@ class Init extends MusicBeatState
 		CoolUtil.precacheMusic('freakyMenu');
 		CoolUtil.precacheMusic('disco');
 
-		#if FEATURE_DISCORD
+		#if desktop 
 		DiscordClient.initialize();
 
 		Application.current.onExit.add(function(exitCode)
@@ -47,7 +48,7 @@ class Init extends MusicBeatState
 		});
 		#end
 
-		#if FEATURE_GAMEJOLT
+		#if desktop 
 		GameJoltAPI.connect();
 		GameJoltAPI.authDaUser(SaveData.gjUser, SaveData.gjToken);
 		#end
