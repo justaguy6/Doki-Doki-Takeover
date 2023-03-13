@@ -78,6 +78,11 @@ class DokiModifierSubState extends MusicBeatSubstate
 			acceptInput = true;
 		});
 
+		#if android
+                addVirtualPad(LEFT_FULL, A_B);
+                addPadCamera();
+                #end
+			
 		changeSelection();
 	}
 
