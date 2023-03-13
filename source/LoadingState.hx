@@ -10,14 +10,14 @@ import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 import haxe.io.Path;
-
+#if NO_PRELOAD_ALL
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import flixel.ui.FlxBar;
 import shaders.ColorMaskShader;
-
+#end
 using StringTools;
 
 class LoadingState extends MusicBeatState
@@ -28,7 +28,7 @@ class LoadingState extends MusicBeatState
 	var stopMusic = false;
 	var callbacks:MultiCallback;
 
-	
+	#if NO_PRELOAD_ALL
 	var targetShit:Float;
 	var backdrop:FlxBackdrop;
 	var logo:FlxSprite;
@@ -39,12 +39,12 @@ class LoadingState extends MusicBeatState
 
 	var artwork:FlxSprite;
 	var authorText:FlxText;
-
+        
 	var galleryData:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/galleryData'));
 
 	var artworkData:Array<String> = [];
 	var authorData:Array<String> = [];
-	
+	#end
 
 	function new(target:FlxState, stopMusic:Bool)
 	{
@@ -55,7 +55,7 @@ class LoadingState extends MusicBeatState
 
 	override function create()
 	{
-		
+		#if NO_PRELOAD_ALL
 		persistentUpdate = persistentDraw = true;
 
 		backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
@@ -125,7 +125,7 @@ class LoadingState extends MusicBeatState
 		loadBar.makeGraphic(FlxG.width, 10, 0xFFF03CA2);
 		loadBar.screenCenter(X);
 		add(loadBar);
-		
+		#end
 		initSongsManifest().onComplete(function(lib)
 		{
 			callbacks = new MultiCallback(onLoad);
@@ -181,7 +181,7 @@ class LoadingState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-
+                #if NO_PRELOAD_ALL
 		if (!SaveData.beatFestival || PlayState.isStoryMode)
 		{
 			logo.animation.play('bump');
@@ -193,13 +193,13 @@ class LoadingState extends MusicBeatState
 			else
 				gfDance.animation.play('danceLeft');
 		}
-		
+		#end
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
+                #if NO_PRELOAD_ALL
 		if (callbacks != null)
 		{
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
@@ -208,14 +208,14 @@ class LoadingState extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
-		
+		#end
 	}
 
 	function onLoad()
 	{
-		
+		#if NO_PRELOAD_ALL
 		loadBar.scale.x = 1;
-		
+		#end
 
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -243,14 +243,14 @@ class LoadingState extends MusicBeatState
 		if (isPlayState)
 		{
 			Paths.setCurrentLevel("week6");
-			
+			#if NO_PRELOAD_ALL
 			var loaded = isSoundLoaded(getSongPath())
 				&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()))
 				&& isLibraryLoaded("shared");
 
 			if (!loaded)
 				return new LoadingState(target, stopMusic);
-			
+			#end
 		}
 
 		if (stopMusic && FlxG.sound.music != null)
@@ -259,7 +259,7 @@ class LoadingState extends MusicBeatState
 		return target;
 	}
 
-	
+	#if NO_PRELOAD_ALL
 	static function isSoundLoaded(path:String):Bool
 	{
 		return Assets.cache.hasSound(path);
@@ -269,7 +269,7 @@ class LoadingState extends MusicBeatState
 	{
 		return Assets.getLibrary(library) != null;
 	}
-	
+	#end
 
 	override function destroy()
 	{
