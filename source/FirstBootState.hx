@@ -72,6 +72,11 @@ class FirstBootState extends MusicBeatState
 		bringinthenote();
 		#end
 
+		#if android
+                addVirtualPad(UP_DOWN, A_B);
+                addPadCamera();
+                #end
+			
 		super.create();
 	}
 
