@@ -30,7 +30,7 @@
 	<!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
 	<define name="FEATURE_FILESYSTEM" if="desktop" />
 	<!-- Defines whether MP4 videos should be enabled. -->
-	<define name="FEATURE_MP4" if="desktop || android" unless="hl" />
+	<define name="FEATURE_MP4" if="desktop" unless="hl" />
 	<!-- Defines whether videos via OpenFL should be enabled. Only works on HTML5. -->
 	<define name="FEATURE_VIDEO" if="html5" />
 	<!-- Defines whether Caching is enabled. Will cause issues on systems with limited memory. Doesn't work with Linux. -->
@@ -115,15 +115,11 @@
 
 	<haxelib name="firetongue" />
 	<haxelib name="hxCodec" if="FEATURE_MP4"/>
-	<haxelib name="extension-androidtools" if="android" />
-
+	
 	<haxelib name="discord_rpc" if="FEATURE_DISCORD"/>
 
 	<!-- https://github.com/TentaRJ/GameJolt-FNF-Integration -->
-	<haxelib name="tentools" if="FEATURE_GAMEJOLT" />
-	<haxelib name="systools" if="FEATURE_GAMEJOLT" />
-	<ndll name="systools" haxelib="systools" if="FEATURE_GAMEJOLT"/>
-
+	
 	<!-- https://twitter.com/EliteMasterEric/status/1535814918917734400 -->
 	<haxelib name="hxcpp-debug-server" if="desktop debug"/>
 
