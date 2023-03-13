@@ -21,11 +21,11 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
-#if (flixel)
+
 import flixel.sound.FlxSound;
-#else
+
 import flixel.system.FlxSound;
-#end
+
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
