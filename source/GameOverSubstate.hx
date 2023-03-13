@@ -140,6 +140,11 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.sound.play(Paths.sound('JarringMonikaSound'));
 				bf.playAnim('crashDeath');
+				
+				#if android
+                addVirtualPad(NONE, A_B);
+                addPadCamera();
+                #end
 			}
 		}
 	}
