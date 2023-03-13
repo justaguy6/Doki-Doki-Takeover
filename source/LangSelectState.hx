@@ -62,6 +62,11 @@ class LangSelectState extends MusicBeatState
 			grpOptionsTexts.add(optionText);
 		}
 
+		#if android
+                addVirtualPad(UP_DOWN, A_B);
+                addPadCamera();
+                #end
+			
 		super.create();
 	}
 
