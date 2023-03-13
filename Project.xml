@@ -46,7 +46,7 @@
 	<!-- Defines whether there's an unlock all function in the Options menu. -->
 	<define name="FEATURE_UNLOCK" unless="PUBLIC_BUILD" />
 	<!-- Defines whether or not the Izzy Engine crash handler is used. -->
-	<define name="CRASH_HANDLER" if="desktop" unless="debug" />
+	<define name="CRASH_HANDLER" if="android"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -102,6 +102,7 @@
 		NOT USING A DIRECT THING TO THE ASSET!!!
 	-->
 	<assets path="assets/fonts" embed='true'/>
+	<assets path="assets/android" if="android"/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
