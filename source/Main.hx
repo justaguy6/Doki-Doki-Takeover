@@ -110,7 +110,7 @@ class Main extends Sprite
 
 		// Finish up loading debug tools.
 		// NOTE: Causes Hashlink to crash, so it's disabled.
-		#if !hl
+		#if !android //nem prestei atenção no que isso faz lol
 		Debug.onGameStart();
 		#end
 	}
@@ -137,7 +137,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = './crash/DDTO_$dateNow.txt';
+		path = Generic.returnPath() + './crash/DDTO_$dateNow.txt';
 
 		for (stackItem in callStack)
 		{
@@ -155,8 +155,8 @@ class Main extends Sprite
 			+ "\nPlease report this error to the GitHub page: https://github.com/Jorge-SunSpirit/Doki-Doki-Takeover\n\n> Crash Handler written by: sqirra-rng";
 			//+ "\nPlease report this error to #playtest-qa-testing.\n\n> Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if(!FileSystem.exists(Generic.returnPath() + "./crash/"))
+			FileSystem.createDirectory(Generic.returnPath() + "./crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
