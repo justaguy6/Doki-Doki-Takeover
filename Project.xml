@@ -30,7 +30,7 @@
 	<!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
 	<define name="FEATURE_FILESYSTEM" if="desktop" />
 	<!-- Defines whether MP4 videos should be enabled. -->
-	<define name="FEATURE_MP4" if="desktop" unless="hl" />
+	<define name="FEATURE_MP4" if="android" unless="hl" />
 	<!-- Defines whether videos via OpenFL should be enabled. Only works on HTML5. -->
 	<define name="FEATURE_VIDEO" if="html5" />
 	<!-- Defines whether Caching is enabled. Will cause issues on systems with limited memory. Doesn't work with Linux. -->
