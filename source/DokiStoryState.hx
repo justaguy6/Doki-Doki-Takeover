@@ -221,7 +221,7 @@ class DokiStoryState extends MusicBeatState
 		updateSelected();
 
 		#if android
-                addVirtualPad(LEFT_FULL A_B);
+                addVirtualPad(LEFT_FULL, A_B);
                 addPadCamera();
                 #end
 			
