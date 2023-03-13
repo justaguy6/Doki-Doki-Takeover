@@ -59,7 +59,7 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 		return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 	}
 
-	const float glitchScale = .4;
+	const float glitchScale = vec2(.4);
 
 	vec2 glitchCoord(vec2 p, vec2 gridSize) {
 		vec2 coord = floor(p / gridSize) * gridSize;;
@@ -92,7 +92,7 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 			mix(
 				mix(rand(seed.seed), 1., seed.prob - .5),
 				0.,
-				(1. - seed.prob) * .5
+				(1. - seed.prob) * vec2(.5)
 			)
 		);
 	}
@@ -105,7 +105,7 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 	}
 
 	vec3 linearToScreen(vec3 linearRGB) {
-		return gamma(linearRGB, 1.0 / GAMMA);
+		return gamma(linearRGB, vec2(1.0) / GAMMA);
 	}
 
 	// --------------------------------------------------------
@@ -121,8 +121,8 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 		vec2 bottomLeft = coord * groupSize;
 		vec2 realBlockSize = (groupSize / subGrid) * blockSize;
 		vec2 topRight = bottomLeft + realBlockSize;
-		topRight -= groupSize / 2.;
-		bottomLeft -= groupSize / 2.;
+		topRight -= groupSize / vec(2.);
+		bottomLeft -= groupSize / vec2(2.);
 		return vec4(bottomLeft, topRight);
 	}
 
@@ -249,9 +249,9 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 	void glitchColor(vec2 p, inout vec3 color) {
 		vec2 groupSize = vec2(.75,.125) * glitchScale;
 		vec2 subGrid = vec2(0,6);
-		float speed = 5.;
+		float speed = vec2(5.);
 		GlitchSeed seed = glitchSeed(glitchCoord(p, groupSize), speed);
-		seed.prob *= .3;
+		seed.prob *= vec2(.3);
 		if (shouldApply(seed) == 1.)
 			color = vec3(0, 0, 0);
 	}
@@ -260,16 +260,16 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 		vec2 destCoord = p;
 		vec2 direction = normalize(destCoord - 0.5);
 		vec2 velocity = direction * intensityChromatic * pow(length(destCoord - 0.5), 3.0);
-		float inverseSampleCount = 1.0 / float(sampleCount);
+		float inverseSampleCount = vec2(1.0) / float(sampleCount);
 
 		mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount, velocity * 2.0 * inverseSampleCount, velocity * 4.0 * inverseSampleCount);
 
 		vec3 accumulator = vec3(0);
 		mat3x2 offsets = mat3x2(0);
 		for (int i = 0; i < sampleCount; i++) {
-			accumulator.r += texture(bitmap, destCoord + offsets[0]).r;
-			accumulator.g += texture(bitmap, destCoord + offsets[1]).g;
-			accumulator.b += texture(bitmap, destCoord + offsets[2]).b;
+			accumulator.r += texture2D(bitmap, destCoord + offsets[0]).r;
+			accumulator.g += texture2D(bitmap, destCoord + offsets[1]).g;
+			accumulator.b += texture2D(bitmap, destCoord + offsets[2]).b;
 			offsets -= increments;
 		}
 		vec4 newColor = vec4(accumulator / float(sampleCount), 1.0);
@@ -279,7 +279,7 @@ class GlitchShader extends FlxShader // https://www.shadertoy.com/view/XtyXzW
 	void main() {
 		// time = mod(time, 1.);
 		vec2 uv = fragCoord/iResolution.xy;
-		float alpha = texture(bitmap, uv).a;
+		float alpha = texture2D(bitmap, uv).a;
 		vec2 p = openfl_TextureCoordv.xy;
 		vec3 color = texture2D(bitmap, p).rgb;
 
