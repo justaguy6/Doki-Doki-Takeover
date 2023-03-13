@@ -70,7 +70,7 @@ class TitleState extends MusicBeatState
 		backdrop = new FlxBackdrop(Paths.image('scrollingBG'));
 		backdrop.velocity.set(-10, 0);
 		backdrop.antialiasing = SaveData.globalAntialiasing;
-		backdrop.shader = new ColorMaskShader(0xFFFDEBF7, 0xFFFDDBF1);
+		
 		add(backdrop);
 
 		creditsBG = new FlxBackdrop(Paths.image('credits/pocBackground', 'doki'));
