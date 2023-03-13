@@ -35,11 +35,11 @@ class StaticShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV an
   // https://github.com/ashima/webgl-noise/blob/master/src/noise2D.glsl
 
   vec3 mod289(vec3 x) {
-    return x - floor(x * (1.0 / 289.0)) * 289.0;
+    return x - floor(x * (1.0 / 289.0)) * vec2(289.0);
   }
 
   vec2 mod289(vec2 x) {
-    return x - floor(x * (1.0 / 289.0)) * 289.0;
+    return x - floor(x * (1.0 / 289.0)) * vec2(289.0);
   }
 
   vec3 permute(vec3 x) {
@@ -79,8 +79,8 @@ class StaticShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV an
   // Gradients: 41 points uniformly over a line, mapped onto a diamond.
   // The ring size 17*17 = 289 is close to a multiple of 41 (41*7 = 287)
 
-    vec3 x = 2.0 * fract(p * C.www) - 1.0;
-    vec3 h = abs(x) - 0.5;
+    vec3 x = 2.0 * fract(p * C.www) - vec2(1.0);
+    vec3 h = abs(x) - vec2(0.5);
     vec3 ox = floor(x + 0.5);
     vec3 a0 = x - ox;
 
@@ -108,7 +108,7 @@ class StaticShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV an
 
     vec2 uv =  openfl_TextureCoordv.xy;
 
-    float jerkOffset = (1.0-step(snoise(vec2(iTime*1.3,5.0)),0.8))*0.05;
+    float jerkOffset = (1.0-step(snoise(vec2(iTime*1.3,5.0)),0.8))*vec2(0.05);
 
     float fuzzOffset = snoise(vec2(iTime*15.0,uv.y*80.0))*0.003;
     float largeFuzzOffset = snoise(vec2(iTime*1.0,uv.y*25.0))*0.004;
@@ -122,7 +122,7 @@ class StaticShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV an
 
     float xOffset = (fuzzOffset + largeFuzzOffset) * horzFuzzOpt;
 
-      float staticVal = 0.0;
+      float staticVal = vec2(0.0);
 
       for (float y = -1.0; y <= 1.0; y += 1.0) {
           float maxDist = 5.0/200.0;
@@ -132,10 +132,10 @@ class StaticShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV an
 
       staticVal *= bottomStaticOpt;
 
-    float red 	=   flixel_texture2D(	bitmap, 	vec2(uv.x + xOffset -0.01*rgbOffsetOpt,y)).r+staticVal;
-    float green = 	flixel_texture2D(	bitmap, 	vec2(uv.x + xOffset,	  y)).g+staticVal;
-    float blue 	=	flixel_texture2D(	bitmap, 	vec2(uv.x + xOffset +0.01*rgbOffsetOpt,y)).b+staticVal;
-    float flAlpha = 	flixel_texture2D(	bitmap, 	vec2(uv.x + xOffset,	  y)).a+staticVal;
+    float red = flixel_texture2D(bitmap, vec2(uv.x + xOffset -0.01*rgbOffsetOpt,y)).r+staticVal;
+    float green =	flixel_texture2D(bitmap, vec2(uv.x + xOffset,	  y)).g+staticVal;
+    float blue	=	flixel_texture2D(bitmap, vec2(uv.x + xOffset +0.01*rgbOffsetOpt,y)).b+staticVal;
+    float flAlpha =	flixel_texture2D(bitmap,	vec2(uv.x + xOffset,	  y)).a+staticVal;
 
     vec3 color = vec3(red,green,blue);
     float scanline = sin(uv.y*800.0)*0.04*scalinesOpt;
