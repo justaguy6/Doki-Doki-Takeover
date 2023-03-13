@@ -119,7 +119,7 @@ class Main extends Sprite
 	{
 		#if linux
 		return Sys.environment()["USER"] == "deck";
-		#elseif windows 
+		#else
 		return false;
 		#end
 	}
