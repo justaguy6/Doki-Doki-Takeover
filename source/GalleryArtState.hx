@@ -83,6 +83,11 @@ class GalleryArtState extends MusicBeatState
 
 		changeItem();
 
+		#if android
+                addVirtualPad(LEFT_RIGHT, A_B);
+                addPadCamera();
+                #end
+			
 		super.create();
 	}
 
