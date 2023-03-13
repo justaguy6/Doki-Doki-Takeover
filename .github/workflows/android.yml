@@ -54,7 +54,7 @@ jobs:
           haxelib --quiet install flixel-ui
           haxelib install flixel-addons
           haxelib --quiet install hscript
-          
+          haxelib --never install flixel
           haxelib --quiet install hxCodec
           haxelib install firetongue
           haxelib git extension-androidtools https://github.com/majigsaw77/extension-androidtools.git
