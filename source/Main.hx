@@ -75,7 +75,7 @@ class Main extends Sprite
 	private function setupGame():Void
 	{
 		// Run this first so we can see logs.
-		Debug.onInitProgram();
+		// Debug.onInitProgram();
 
 		#if linux
 		startFullscreen = isSteamDeck();
@@ -110,8 +110,8 @@ class Main extends Sprite
 
 		// Finish up loading debug tools.
 		// NOTE: Causes Hashlink to crash, so it's disabled.
-		#if !android //nem prestei atenção no que isso faz lol
-		Debug.onGameStart();
+		#if debug
+		//Debug.onGameStart();
 		#end
 	}
 
@@ -119,7 +119,7 @@ class Main extends Sprite
 	{
 		#if linux
 		return Sys.environment()["USER"] == "deck";
-		#else
+		#elseif windows 
 		return false;
 		#end
 	}
