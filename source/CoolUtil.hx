@@ -218,7 +218,7 @@ class CoolUtil
 			name += split[split.length - 1];
 		}
 
-		return FileSystem.exists(path + name + ".sol");
+		return FileSystem.exists(Generic.returnPath() + path + name + ".sol");
 	}
 
 	/**
@@ -239,18 +239,19 @@ class CoolUtil
 		path = haxe.io.Path.normalize('$directory/../../../$renpy/$doki') + "/";
 		#end
 
-		return FileSystem.exists(path + "persistent");
+		return FileSystem.exists(Generic.returnPath() + path + "persistent");
 	}
 
 	/**
 		Check for an existing Doki Doki Literature Club Plus! save file.
 	**/
+		#if windows		
 	public static function ddlcpSaveCheck():Bool
 	{
 		var path = Sys.getEnv("userprofile") + '\\AppData\\LocalLow\\Team Salvato\\Doki Doki Literature Club Plus\\save_preferences.sav';
 		return FileSystem.exists(path);
 	}
-
+        #end
 	public static function getUsername():String
 	{
 		#if FEATURE_OBS
