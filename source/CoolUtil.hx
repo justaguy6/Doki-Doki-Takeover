@@ -6,7 +6,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import flixel.graphics.FlxGraphic;
 import flixel.addons.transition.FlxTransitionableState;
 import openfl.utils.Assets;
-#if FEATURE_FILESYSTEM
+#if sys
 import sys.io.Process;
 import sys.FileSystem;
 #end
