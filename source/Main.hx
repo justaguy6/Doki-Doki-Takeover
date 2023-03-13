@@ -31,7 +31,7 @@ class Main extends Sprite
 	var game:FlxGame;
 	var gameWidth:Int = 1280; // Width of the game in pixels
 	var gameHeight:Int = 720; // Height of the game in pixels
-	var initialState:Class<FlxState> = Init; // The FlxState the game starts with.
+	public static var initialState:Class<FlxState> = Init; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
