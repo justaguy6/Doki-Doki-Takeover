@@ -101,7 +101,7 @@ class CostumeSelectStateOriginal extends MusicBeatState
 			true, // Regular, unlocked by default
 			true, // Minus, unlocked by default
 			CoolUtil.flixelSaveCheck('Disky', 'Soft Mod'), // Soft, save check for Soft Mod
-			CoolUtil.renpySaveCheck() || CoolUtil.ddlcpSaveCheck(), // Mr. Cow, save checks for DDLC. If you played this mod and don't have this unlocked then I am extremely dissappointed in you.
+			// Mr. Cow, save checks for DDLC. If you played this mod and don't have this unlocked then I am extremely dissappointed in you.
 			Highscore.getAccuracyUnlock('Your Demise', 2) >= 90, // Blue Skies, 90% Accuracy on Your Demise
 			SaveData.unlockHFCostume // HoloFunk, unlocked by clicking on sticker
 		],
