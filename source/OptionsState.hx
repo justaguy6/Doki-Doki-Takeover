@@ -171,7 +171,7 @@ class OptionsState extends MusicBeatState
 
 		#if android
 		addVirtualPad(UP_DOWN, A_B_C);
-		virtualPad.y = -24;
+		
 		#end
 			
 		super.create();
