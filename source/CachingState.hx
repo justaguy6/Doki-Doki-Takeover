@@ -10,7 +10,7 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import openfl.utils.Assets as OpenFlAssets;
 import shaders.ColorMaskShader;
-#if FEATURE_FILESYSTEM
+#if sys
 import sys.FileSystem;
 #end
 
@@ -67,21 +67,21 @@ class CachingState extends MusicBeatState
 		loadBar.screenCenter(X);
 		add(loadBar);
 
-		#if (FEATURE_FILESYSTEM && FEATURE_CACHING)
+		#if sys
 		if (SaveData.cacheCharacter)
 		{
-			for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/images/characters")))
+			for (i in HSys.readDirectory("assets/images/characters"))
 			{
 				if (!i.endsWith(".png"))
 					continue;
 				characters.push(i);
 			}
 	
-			for (i in FileSystem.readDirectory(FileSystem.absolutePath('assets/images/characters')))
+			for (i in HSys.readDirectory('assets/images/characters'))
 			{
-				if (FileSystem.isDirectory(FileSystem.absolutePath('assets/images/characters/$i')))
+				if (FileSystem.exists(Generic.returnPath() + 'assets/images/characters/$i'))
 				{
-					for (f in FileSystem.readDirectory(FileSystem.absolutePath('assets/images/characters/$i')))
+					for (f in HSys.readDirectory('assets/images/characters/$i'))
 					{
 						if (!f.endsWith(".png"))
 							continue;
@@ -94,11 +94,11 @@ class CachingState extends MusicBeatState
 
 		if (SaveData.cacheSong)
 		{
-			for (i in FileSystem.readDirectory(FileSystem.absolutePath('assets/songs')))
+			for (i in HSys.readDirectory('assets/songs'))
 			{
-				if (FileSystem.isDirectory(FileSystem.absolutePath('assets/songs/$i')))
+				if (FileSystem.exists(Generic.returnPath() + 'assets/songs/$i'))
 				{
-					for (f in FileSystem.readDirectory(FileSystem.absolutePath('assets/songs/$i')))
+					for (f in HSys.readDirectory('assets/songs/$i'))
 					{
 						if (!f.endsWith(".ogg"))
 							continue;
