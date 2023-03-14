@@ -47,7 +47,6 @@ class Main extends Sprite
 		"crackBG_og",
 		"Inf",
 		"metaintro",
-		"HaxeFlixelIntro",
 		"monika",
 		"monikacodin",
 		"rain",
@@ -56,8 +55,8 @@ class Main extends Sprite
 		"senpaicodin",
 		"testvm",
 		"youregoingtophilly",
+	]; 
 		
-	]; //better way to do this?
 	
 	public static function main():Void
 	{
