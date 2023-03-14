@@ -2327,7 +2327,7 @@ class PlayState extends MusicBeatState
 				scoreTxt.y -= 15;
 		}
 
-		// lyics
+		/* lyics
 		try
 		{
 			var lyricFile = CoolUtil.coolTextFile(Paths.txt('data/songs/${SONG.song.toLowerCase()}/lyrics'));
@@ -2355,7 +2355,7 @@ class PlayState extends MusicBeatState
 			lyrics.antialiasing = SaveData.globalAntialiasing;
 			lyrics.cameras = [camHUD];
 			add(lyrics);
-		}
+		}*/
 
 		judgementCounter = new FlxText(20, 0, 0, "", 20);
 		judgementCounter.setFormat(LangUtil.getFont(), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
