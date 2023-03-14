@@ -2457,6 +2457,11 @@ class PlayState extends MusicBeatState
 		if (curStage == 'dokiclubroom' || curStage == 'dokifestival')
 			add(staticshock);
 
+		#if android
+                addAndroidControls();
+                androidControls.visible = true;
+                #end
+			
 		startingSong = true;
 		isintro = true;
 		if (showCutscene && !ForceDisableDialogue)
