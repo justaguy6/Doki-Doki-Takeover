@@ -74,7 +74,7 @@ import sys.FileSystem;
 import GameJolt.GameJoltAPI;
 #end
 #if FEATURE_MP4
-import hxcodec.VideoHandler as NetStreamHandler;
+import hxcodec.VideoHandler;
 import hxcodec.VideoSprite;
 #end
 
@@ -2670,11 +2670,10 @@ class PlayState extends MusicBeatState
 				if (isStoryMode && showCutscene)
 				{
 					#if (FEATURE_MP4 || FEATURE_VIDEO)
-					var video:NetStreamHandler = new NetStreamHandler();
-					video.canSkip = SaveData.beatLibitina;
-					video.skipKeys = [FlxKey.ENTER];
-					video.playVideo(Paths.video('metaintro'), false, true);
+					var video:VideoHandler = new VideoHandler();
+					video.playVideo(Paths.video('metaintro'))
 					video.finishCallback = function()
+					
 					{
 						startCountdown();
 					}
@@ -2991,10 +2990,8 @@ class PlayState extends MusicBeatState
 					});
 
 					#if (FEATURE_MP4 || FEATURE_VIDEO)
-					var video:NetStreamHandler = new NetStreamHandler();
-					video.canSkip = SaveData.beatPrologue;
-					video.skipKeys = [FlxKey.ENTER];
-					video.playVideo(Paths.video('monika'), false, true);
+					var video:VideoHandler = new VideoHandler();
+					video.playVideo(Paths.video('monika'))
 					video.finishCallback = function()
 					{
 						endSong();
@@ -3040,26 +3037,26 @@ class PlayState extends MusicBeatState
 			case 'monikatransform':
 			{
 				#if (FEATURE_MP4 || FEATURE_VIDEO)
-				var video:NetStreamHandler = new NetStreamHandler();
-				video.canSkip = false;
+				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('monikacodin'));
 				#end
+				
 			}
 			case 'senpaitransform':
 			{
 				#if (FEATURE_MP4 || FEATURE_VIDEO)
-				var video:NetStreamHandler = new NetStreamHandler();
-				video.canSkip = false;
+				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('senpaicodin'));
 				#end
+				
 			}
 			case 'youregoingtophilly':
 			{
 				#if (FEATURE_MP4 || FEATURE_VIDEO)
-				var video:NetStreamHandler = new NetStreamHandler();
-				video.canSkip = false;
+				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('youregoingtophilly'));
 				#end
+				
 			}
 			case 'wiltedbgin':
 			{
