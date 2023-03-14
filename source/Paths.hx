@@ -22,6 +22,8 @@ class Paths
 {
 	inline public static var SOUND_EXT = "ogg";
 
+	inline public static var VIDEO_EXT = "mp4";
+	
 	public static var dumpExclusions:Array<String> = [
 		'assets/images/Credits_LeftSide.png',
 		'assets/images/cursor.png',
