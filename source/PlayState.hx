@@ -5795,8 +5795,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if (KeyBinds.gamepad && !FlxG.keys.pressed.ANY)
-		{
+		
 			if (pressArray.contains(true))
 			{
 				for (i in 0...pressArray.length)
@@ -5814,7 +5813,7 @@ class PlayState extends MusicBeatState
 						onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
 				}
 			}
-		}
+		
 
 		if (boyfriend.holdTimer > Conductor.stepCrochet * 0.001 * (boyfriend.singDuration / Conductor.playbackSpeed) && !holdArray.contains(true) && !mirrormode)
 		{
