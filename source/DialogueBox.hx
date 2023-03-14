@@ -197,6 +197,19 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
+		#if android
+		var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			justTouched = false;
+			
+			if (touch.justReleased){
+				justTouched = true;
+			}
+		}
+		#end
+			
 		if (canSkip && !playingCutscene)
 		{
 			if (PlayerSettings.player1.controls.BACK && !stopspamming && canFullSkip && !playingCutscene && dialogueStarted)
@@ -206,7 +219,7 @@ class DialogueBox extends FlxSpriteGroup
 				endinstantly();
 			}
 	
-			if (PlayerSettings.player1.controls.ACCEPT && dialogueEnded)
+			if (PlayerSettings.player1.controls.ACCEPT #if mobile || justTouched #end && dialogueEnded)
 			{
 				FlxG.sound.play(Paths.sound('clickText'), 0.8);
 				enddialogue();
