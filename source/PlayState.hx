@@ -2671,7 +2671,7 @@ class PlayState extends MusicBeatState
 				{
 					#if (FEATURE_MP4 || FEATURE_VIDEO)
 					var video:VideoHandler = new VideoHandler();
-					video.playVideo(Paths.video('metaintro'))
+					video.playVideo(Paths.video('metaintro'));
 					video.finishCallback = function()
 					
 					{
@@ -2991,7 +2991,7 @@ class PlayState extends MusicBeatState
 
 					#if (FEATURE_MP4 || FEATURE_VIDEO)
 					var video:VideoHandler = new VideoHandler();
-					video.playVideo(Paths.video('monika'))
+					video.playVideo(Paths.video('monika'));
 					video.finishCallback = function()
 					{
 						endSong();
