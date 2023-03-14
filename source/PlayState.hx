@@ -5673,7 +5673,7 @@ class PlayState extends MusicBeatState
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(eventKey);
 
-		if (!toggleBotplay && !paused && key > -1 && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || (!FlxG.keys.checkStatus(eventKey, PRESSED) && KeyBinds.gamepad)))
+		if (!toggleBotplay && !paused && key > -1 && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || (!FlxG.keys.checkStatus(eventKey, PRESSED))))
 		{
 			if (!boyfriend.stunned && generatedMusic && !endingSong)
 			{
