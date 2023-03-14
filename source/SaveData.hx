@@ -61,7 +61,7 @@ class SaveData
 	public static var goodMs:Null<Float> = 90.0;
 	public static var sickMs:Null<Float> = 45.0;
 	public static var ratingToggle:Null<Bool> = true;
-	public static var shaders:Null<Bool> = true;
+	public static var shaders:Null<Bool> = false;
 	public static var songSpeed:Null<Float> = 1;
 
 	// Costumes
