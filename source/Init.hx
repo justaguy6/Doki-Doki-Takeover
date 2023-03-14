@@ -65,7 +65,7 @@ class Init extends MusicBeatState
 			FlxTransitionableState.skipNextTransIn = true;
 
 			if (SaveData.cacheCharacter || SaveData.cacheSong)
-				MusicBeatState.switchState(new TitleState());
+				MusicBeatState.switchState(new CachingState());
 			else
 				MusicBeatState.switchState(new TitleState());
 		}
