@@ -6647,7 +6647,7 @@ class PlayState extends MusicBeatState
 					switch (curStep)
 					{
 						case 2420:
-							lyrics.y += 80;
+							
 
 							scorePop = false;
 							FlxTween.tween(healthBarBG, {alpha: 0}, 2, {ease: FlxEase.sineIn});
