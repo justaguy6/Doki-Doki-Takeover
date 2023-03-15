@@ -2669,7 +2669,7 @@ class PlayState extends MusicBeatState
 				scorePop = false;
 				if (isStoryMode && showCutscene)
 				{
-					#if (FEATURE_MP4 || FEATURE_VIDEO)
+					#if desktop 
 					var video:VideoHandler = new VideoHandler();
 					video.playVideo(Paths.video('metaintro'));
 					video.finishCallback = function()
@@ -2989,7 +2989,7 @@ class PlayState extends MusicBeatState
 						add(blackScreentwo);
 					});
 
-					#if (FEATURE_MP4 || FEATURE_VIDEO)
+					#if desktop 
 					var video:VideoHandler = new VideoHandler();
 					video.playVideo(Paths.video('monika'));
 					video.finishCallback = function()
@@ -3036,7 +3036,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'monikatransform':
 			{
-				#if (FEATURE_MP4 || FEATURE_VIDEO)
+				#if desktop 
 				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('monikacodin'));
 				#end
@@ -3044,7 +3044,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'senpaitransform':
 			{
-				#if (FEATURE_MP4 || FEATURE_VIDEO)
+				#if desktop 
 				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('senpaicodin'));
 				#end
@@ -3052,7 +3052,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'youregoingtophilly':
 			{
-				#if (FEATURE_MP4 || FEATURE_VIDEO)
+				#if desktop 
 				var video:VideoHandler = new VideoHandler();
 				video.playVideo(Paths.video('youregoingtophilly'));
 				#end
