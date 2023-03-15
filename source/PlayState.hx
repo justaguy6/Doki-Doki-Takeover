@@ -366,7 +366,7 @@ class PlayState extends MusicBeatState
 	var cg2BG:BGSprite;
 	var cg2Group:FlxSpriteGroup;
 
-	var poemVideo:VideoSprite;
+	
 	var sideWindow:BGSprite;
 	var dokiData:Array<Float> = [];
 
