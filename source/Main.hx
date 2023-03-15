@@ -42,21 +42,6 @@ class Main extends Sprite
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
-	static final losvideos:Array<String> = [
-		"crackBG",
-		"crackBG_og",
-		"Inf",
-		"metaintro",
-		"monika",
-		"monikacodin",
-		"rain",
-		"rain_og",
-		"sayointro",
-		"senpaicodin",
-		"testvm",
-		"youregoingtophilly",
-	]; 
-		
 	
 	public static function main():Void
 	{
@@ -68,8 +53,7 @@ class Main extends Sprite
 	{
 		super();
 		
-		Generic.initCrashHandler();
-
+		
 		if (stage != null)
 		{
 			init();
@@ -113,19 +97,7 @@ class Main extends Sprite
 		}
 		#end
 			
-		Generic.mode = ROOTDATA;
-		if (!FileSystem.exists(Generic.returnPath() + 'assets')) {
-			FileSystem.createDirectory(Generic.returnPath() + 'assets');
-		}
-		if (!FileSystem.exists(Generic.returnPath() + 'assets/videos')) {
-			FileSystem.createDirectory(Generic.returnPath() + 'assets/videos');
-		}
-
-                for (video in losvideos) {
-			Generic.copyContent(Paths._video(video), Paths._video(video));
-		}
-	
-
+		
 		game = new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
 		addChild(game);
 
