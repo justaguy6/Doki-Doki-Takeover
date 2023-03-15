@@ -27,9 +27,9 @@ class CoolUtil
 	public static function difficultyString(diff:Int):String
 	{
 		var difficultyArray:Array<String> = [
-			LangUtil.getString('cmnEasy'),
+			
 			LangUtil.getString('cmnNormal'),
-			LangUtil.getString('cmnHard')
+			
 		];
 
 		return difficultyArray[diff];
