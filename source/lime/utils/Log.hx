@@ -1,5 +1,5 @@
 package lime.utils;
-
+#if !android
 import haxe.PosInfos;
 import sys.io.File;
 import sys.FileSystem;
@@ -156,3 +156,4 @@ class Log
 		#end
 	}
 }
+		    #end
