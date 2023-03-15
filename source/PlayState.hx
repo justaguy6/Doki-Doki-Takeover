@@ -1449,16 +1449,7 @@ class PlayState extends MusicBeatState
 					lightoverlay.blend = ADD;
 
 					// love n' funkin'
-					poemVideo = new VideoSprite();
-					poemVideo.playVideo(Paths.video('lnf'), true);
-					poemVideo.bitmap.canSkip = false;
-					poemVideo.scrollFactor.set();
-					poemVideo.setGraphicSize(Std.int(poemVideo.width / defaultCamZoom));
-					poemVideo.updateHitbox();
-					poemVideo.antialiasing = SaveData.globalAntialiasing;
-					poemVideo.cameras = [camGame2];
-					poemVideo.alpha = 0.001;
-
+					
 					sideWindow = new BGSprite('notepad/SideWindow', 'doki', 0, 0, 0, 0);
 					sideWindow.setGraphicSize(Std.int(sideWindow.width / defaultCamZoom));
 					sideWindow.updateHitbox();
@@ -2630,7 +2621,7 @@ class PlayState extends MusicBeatState
 				if (extrachar1 != null) extrachar1.x -= 5;
 				if (extrachar2 != null) extrachar2.x += 5;
 
-				add(poemVideo);
+				
 				add(sideWindow);
 
 				if (isStoryMode && showCutscene)
@@ -7092,7 +7083,7 @@ class PlayState extends MusicBeatState
 					switch (curStep)
 					{
 						case 383:
-							poemVideo.bitmap.time = 0;
+							
 						case 384:
 							dokiData = [
 								extrachar2.x,
@@ -7115,7 +7106,7 @@ class PlayState extends MusicBeatState
 							
 							camZooming = false;
 							camGame2.fade(FlxColor.WHITE, 0.5, true);
-							poemVideo.alpha = 1;
+							
 							sideWindow.alpha = 1;
 						case 504:
 							FlxTween.tween(extrachar2, {x: -extrachar2.width * 1.5}, CoolUtil.calcSectionLength(0.25), {ease: FlxEase.sineInOut});
@@ -7161,7 +7152,7 @@ class PlayState extends MusicBeatState
 							
 							camZooming = true;
 							camGame2.fade(FlxColor.WHITE, 0.5, true);
-							poemVideo.alpha = 0.001;
+							
 							sideWindow.alpha = 0.001;
 					}
 				case 'libitina':
