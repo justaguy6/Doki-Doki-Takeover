@@ -37,7 +37,7 @@ class CoolUtil
 
 	public static function internalDifficultyString(diff:Int):String
 	{
-		var difficultyArray:Array<String> = ['Easy', 'Normal', 'Hard'];
+		var difficultyArray:Array<String> = ['Normal'];
 		return difficultyArray[diff];
 	}
 
