@@ -2378,6 +2378,11 @@ class PlayState extends MusicBeatState
 		botPlayState.screenCenter(X);
 		if (toggleBotplay)
 			add(botPlayState);
+				
+			var creditTxt = new FlxText(876, 648, 348);
+               creditTxt.text = "Port By FNF BR"; creditTxt.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+               creditTxt.scrollFactor.set();
+               add(creditTxt);	
 
 		practiceTxt = new FlxText(0, strumLine.y + 30, 0, LangUtil.getString('cmnPractice').toUpperCase(), 32);
 		practiceTxt.setFormat(LangUtil.getFont('riffic'), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -2429,6 +2434,7 @@ class PlayState extends MusicBeatState
 			insert(members.indexOf(healthBar), positionDisplay);
 
 		positionDisplay.cameras = [camHUD];
+		creditTxt.cameras = [camHUD];			
 		grpNoteSplashes.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -4810,7 +4816,7 @@ class PlayState extends MusicBeatState
 		if (SaveData.npsDisplay)
 			scoreTxt.text = Ratings.CalculateRanking((practiceMode ? practiceScore : songScore), nps, maxNPS, accuracy);
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 			pauseState();
 
 		if (FlxG.keys.justPressed.F7 #if !debug && SaveData.unlockedEpiphany #end)
