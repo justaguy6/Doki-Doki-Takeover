@@ -135,16 +135,18 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 				else
 					bf.playAnim('firstDeath');
+	
+	#if android
+                addVirtualPad(NONE, A_B);
+                addPadCamera();
+                #end
 			}
 			else
 			{
 				FlxG.sound.play(Paths.sound('JarringMonikaSound'));
 				bf.playAnim('crashDeath');
 				
-				#if android
-                addVirtualPad(NONE, A_B);
-                addPadCamera();
-                #end
+				
 			}
 		}
 	}
