@@ -47,7 +47,7 @@ class OptionsState extends MusicBeatState
 			new FPSOption(LangUtil.getString('descFPSCount', 'option')),
 			#if android
 			new AntiAliasing(LangUtil.getString('descAntialiasing', 'option')),
-			#else if desktop 
+			#elseif desktop 
 			new Shaders(LangUtil.getString('descShaders', 'option')),
 			#end
 			new CustomCursor(LangUtil.getString('descCursor', 'option')),
