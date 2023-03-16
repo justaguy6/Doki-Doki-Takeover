@@ -82,9 +82,9 @@
 
 	<assets path="assets/videos"/>
 
-	<define name="NO_LANGUAGE" unless="FEATURE_LANGUAGE"/>
+	<define name="NO_LANGUAGE"/>
 
-	<assets path="assets/locales" if="FEATURE_LANGUAGE"/>
+	<assets path="assets/locales"/>
 
 	<section if="NO_LANGUAGE">
 		<assets path="assets/locales/en-US"/>
