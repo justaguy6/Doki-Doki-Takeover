@@ -73,7 +73,7 @@ class OptionsState extends MusicBeatState
 		]),
 		#end
 		new OptionCategory(LangUtil.getString('catSave', 'option'), [
-			#if android
+			#if desktop 
 			new LanguageSelection(LangUtil.getString('descLanguage', 'option')),
 			#end
 			#if FEATURE_OBS
