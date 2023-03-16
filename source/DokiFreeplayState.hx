@@ -346,13 +346,13 @@ class DokiFreeplayState extends MusicBeatState
 			if (allBeat && !SaveData.popupLibitina)
 				openSubState(new PopupMessage('Libitina', 'freeplay'));
 
-			if (FlxG.keys.justPressed.M || #if android || virtualPad.buttonC.justPressed #end)
+			if (FlxG.keys.justPressed.M #if android || virtualPad.buttonC.justPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				openSubState(new DokiModifierSubState());
 			}
 
-			if (SaveData.beatProtag && FlxG.keys.justPressed.C || #if android || virtualPad.buttonX.justPressed #end && (curPage != 3 && curPage != 4))
+			if (SaveData.beatProtag && FlxG.keys.justPressed.C #if android || virtualPad.buttonX.justPressed #end && (curPage != 3 && curPage != 4))
 				MusicBeatState.switchState(new CostumeSelectState());
 
 			if (controls.UP_P && !diffselect && (curPage != 3 && curPage != 4))
