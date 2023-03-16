@@ -45,10 +45,11 @@ class OptionsState extends MusicBeatState
 		]),
 		new OptionCategory(LangUtil.getString('catAppearance', 'option'), [
 			new FPSOption(LangUtil.getString('descFPSCount', 'option')),
-			#if html5
+			#if android
 			new AntiAliasing(LangUtil.getString('descAntialiasing', 'option')),
-			#end
+			#else if desktop 
 			new Shaders(LangUtil.getString('descShaders', 'option')),
+			#end
 			new CustomCursor(LangUtil.getString('descCursor', 'option')),
 			new FlashingLightsOption(LangUtil.getString('descFlashing', 'option')),
 			new AccuracyOption(LangUtil.getString('descAccuracy', 'option')),
@@ -81,7 +82,7 @@ class OptionsState extends MusicBeatState
 			#if FEATURE_GAMEJOLT
 			new GameJolt(LangUtil.getString('descGameJolt', 'option')),
 			#end
-			#if android
+			#if desktop 
 			new UnlockAll("Unlocks everything that's offered in this game. Does not unlock costumes with requirements."),
 			#end
 			new ResetScore(LangUtil.getString('descScoreReset', 'option')),
