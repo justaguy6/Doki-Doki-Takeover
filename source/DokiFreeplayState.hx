@@ -352,7 +352,7 @@ class DokiFreeplayState extends MusicBeatState
 				openSubState(new DokiModifierSubState());
 			}
 
-			if (SaveData.beatProtag && FlxG.keys.justPressed.C #if android && (curPage != 3 && curPage != 4))
+			if (SaveData.beatProtag && FlxG.keys.justPressed.C && (curPage != 3 && curPage != 4))
 				MusicBeatState.switchState(new CostumeSelectState());
 
 			if (controls.UP_P && !diffselect && (curPage != 3 && curPage != 4))
