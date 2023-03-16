@@ -82,11 +82,10 @@
 
 	<assets path="assets/videos"/>
 
-	<define name="NO_LANGUAGE"/>
-
+	
 	<assets path="assets/locales"/>
 
-	<section if="NO_LANGUAGE">
+	<section>
 		<assets path="assets/locales/en-US"/>
 		<assets path="assets/locales/index.xml"/>
 	</section>
