@@ -308,7 +308,7 @@ class DokiFreeplayState extends MusicBeatState
 		add(mouseManager);
 
 		#if android
-                addVirtualPad(LEFT_FULL, A_B_C_X);
+                addVirtualPad(LEFT_FULL, A_B_C);
                 addPadCamera();
                 #end
 			
@@ -352,7 +352,7 @@ class DokiFreeplayState extends MusicBeatState
 				openSubState(new DokiModifierSubState());
 			}
 
-			if (SaveData.beatProtag && FlxG.keys.justPressed.C #if android || virtualPad.buttonX.justPressed #end && (curPage != 3 && curPage != 4))
+			if (SaveData.beatProtag && FlxG.keys.justPressed.C #if android && (curPage != 3 && curPage != 4))
 				MusicBeatState.switchState(new CostumeSelectState());
 
 			if (controls.UP_P && !diffselect && (curPage != 3 && curPage != 4))
