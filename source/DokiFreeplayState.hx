@@ -308,7 +308,7 @@ class DokiFreeplayState extends MusicBeatState
 		add(mouseManager);
 
 		#if android
-                addVirtualPad(LEFT_FULL, A_B_C);
+                addVirtualPad(LEFT_FULL, A_B_C_X_Y);
                 addPadCamera();
                 #end
 			
@@ -332,7 +332,9 @@ class DokiFreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 
 		#if debug
-		if (FlxG.keys.justPressed.F1 && acceptInput)
+		if (FlxG.keys.justPressed.F1 #if android || virtualPad.buttonC.justPressed #end
+
+&& acceptInput)
 			openSubState(new PopupMessage('epiphany', 'freeplay'));
 		if (FlxG.keys.justPressed.F3 && acceptInput)
 			openSubState(new PopupMessage('libitina', 'freeplay'));
@@ -346,13 +348,13 @@ class DokiFreeplayState extends MusicBeatState
 			if (allBeat && !SaveData.popupLibitina)
 				openSubState(new PopupMessage('Libitina', 'freeplay'));
 
-			if (FlxG.keys.justPressed.M #if android || virtualPad.buttonC.justPressed #end)
+			if (FlxG.keys.justPressed.M #if android || virtualPad.buttonX.justPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				openSubState(new DokiModifierSubState());
 			}
 
-			if (SaveData.beatProtag && FlxG.keys.justPressed.C && (curPage != 3 && curPage != 4))
+			if (SaveData.beatProtag && FlxG.keys.justPressed.C #if android || virtualPad.buttonY.justPressed #end && (curPage != 3 && curPage != 4))
 				MusicBeatState.switchState(new CostumeSelectState());
 
 			if (controls.UP_P && !diffselect && (curPage != 3 && curPage != 4))
