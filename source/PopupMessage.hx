@@ -91,6 +91,12 @@ class PopupMessage extends MusicBeatSubstate
 		add(text);
 
 		FlxG.sound.play(Paths.sound('scrollMenu'));
+		
+		#if android
+		addVirtualPad(NONE, A);
+		virtualPad.y = -26;
+		#end
+		
 		updateBox();
 	}
 
