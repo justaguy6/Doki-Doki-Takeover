@@ -308,7 +308,7 @@ class DokiFreeplayState extends MusicBeatState
 		add(mouseManager);
 
 		#if android
-                addVirtualPad(LEFT_FULL, A_B_C_X_Y);
+                addVirtualPad(LEFT_FULL, A_B_X_Y);
                 addPadCamera();
                 #end
 			
