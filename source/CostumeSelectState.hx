@@ -233,6 +233,11 @@ class CostumeSelectState extends MusicBeatState
 
 		changeItem();
 
+		#if android
+                addVirtualPad(UP_DOWN, A_B);
+                addPadCamera();
+                #end
+			
 		super.create();
 	}
 
