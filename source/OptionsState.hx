@@ -82,7 +82,7 @@ class OptionsState extends MusicBeatState
 			#if FEATURE_GAMEJOLT
 			new GameJolt(LangUtil.getString('descGameJolt', 'option')),
 			#end
-			#if desktop 
+			#if android 
 			new UnlockAll("Unlocks everything that's offered in this game. Does not unlock costumes with requirements."),
 			#end
 			new ResetScore(LangUtil.getString('descScoreReset', 'option')),
