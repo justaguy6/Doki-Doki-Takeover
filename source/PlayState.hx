@@ -2791,7 +2791,7 @@ class PlayState extends MusicBeatState
 				if (storyDifficulty == 2)
 					addcharacter("bigmonika-dress", 1);
 				else
-					lyrics.visible = false;
+					
 
 				dad.cameras = [camGame2];
 
