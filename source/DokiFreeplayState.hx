@@ -332,9 +332,9 @@ class DokiFreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 
 		#if debug
-		if (FlxG.keys.justPressed.F1 #if android || virtualPad.buttonC.justPressed #end
+		if (FlxG.keys.justPressed.F1&& acceptInput)
 
-&& acceptInput)
+
 			openSubState(new PopupMessage('epiphany', 'freeplay'));
 		if (FlxG.keys.justPressed.F3 && acceptInput)
 			openSubState(new PopupMessage('libitina', 'freeplay'));
