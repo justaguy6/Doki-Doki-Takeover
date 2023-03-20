@@ -82,11 +82,6 @@ class DokiCards extends MusicBeatSubstate
 		});
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-		
-		#if android
-                addVirtualPad(LEFT_FULL, A_B);
-                addPadCamera();
-                #end
 	}
 
 	override function update(elapsed:Float):Void
